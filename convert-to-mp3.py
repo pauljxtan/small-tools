@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.8
+#!/usr/bin/env python3
 """Simple ffmpeg wrapper to convert an audio file to MP3."""
 
 import argparse
