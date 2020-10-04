@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.8
+#!/usr/bin/env python3
 """Group files into sub-directories according to filename prefixes.
 
 Example:
@@ -29,8 +29,9 @@ import sys
 def main():
     args = parse_args()
 
-    for filename in sorted(f for f in os.listdir(args.path)
-                           if os.path.isfile(f) and f != os.path.basename(sys.argv[0])):
+    for filename in sorted(
+            f for f in os.listdir(args.path)
+            if os.path.isfile(f) and f != os.path.basename(sys.argv[0])):
         name = os.path.splitext(filename)[0]
         dest_path = '.'
 
@@ -48,11 +49,17 @@ def main():
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='group files by filename prefix',
-                                     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser(
+        description='group files by filename prefix',
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument('--prefix-length', default=1, type=int, help='length of prefix to use')
-    parser.add_argument('--path', default='.', help='path at which to process files')
+    parser.add_argument('--prefix-length',
+                        default=1,
+                        type=int,
+                        help='length of prefix to use')
+    parser.add_argument('--path',
+                        default='.',
+                        help='path at which to process files')
     parser.add_argument('--dry-run',
                         default=False,
                         action='store_true',
