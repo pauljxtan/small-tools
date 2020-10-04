@@ -4,7 +4,7 @@
 import argparse
 import os
 
-# Allowed bitrates with FFMPEG options
+# Allowed bitrates with ffmpeg options
 BITRATE_OPTS = {'v0': '-q:a 0', '320k': '-b:a 320k'}
 
 
@@ -21,8 +21,9 @@ def main():
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='convert an audio file to MP3',
-                                     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser(
+        description='convert an audio file to MP3',
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('-b',
                         '--bitrate',
