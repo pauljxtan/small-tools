@@ -5,14 +5,14 @@ import argparse
 import os
 
 # Allowed bitrates with ffmpeg options
-BITRATE_OPTS = {'v0': '-q:a 0', '320k': '-b:a 320k'}
+BITRATE_OPTS = {"v0": "-q:a 0", "320k": "-b:a 320k"}
 
 
 def main():
     args = parse_args()
 
     bitrate_opt = BITRATE_OPTS[args.bitrate]
-    mp3_filename = f'{os.path.splitext(args.filename)[0]}.mp3'
+    mp3_filename = f"{os.path.splitext(args.filename)[0]}.mp3"
     cmd = f'ffmpeg -i "{args.filename}" {bitrate_opt} "{mp3_filename}"'
 
     print(cmd)
@@ -22,23 +22,24 @@ def main():
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description='convert an audio file to MP3',
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+        description="convert an audio file to MP3",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
 
-    parser.add_argument('-b',
-                        '--bitrate',
-                        choices=BITRATE_OPTS.keys(),
-                        default='v0',
-                        help='bitrate')
-    parser.add_argument('-n',
-                        '--dry-run',
-                        default=False,
-                        action='store_true',
-                        help='Print the command without running it')
-    parser.add_argument('filename')
+    parser.add_argument(
+        "-b", "--bitrate", choices=BITRATE_OPTS.keys(), default="v0", help="bitrate"
+    )
+    parser.add_argument(
+        "-n",
+        "--dry-run",
+        default=False,
+        action="store_true",
+        help="Print the command without running it",
+    )
+    parser.add_argument("filename")
 
     return parser.parse_args()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

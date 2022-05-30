@@ -13,11 +13,11 @@ $(venv):
 	$(venv)/bin/pip install -r requirements.txt
 
 fmt: venv
-	isort -rc *.py
-	yapf -ir *.py
+	$(venv)/bin/isort *.py
+	$(venv)/bin/black *.py
 
 lint: venv
-	pylint --rcfile=setup.cfg *.py
+	$(venv)/bin/pylint --rcfile=setup.cfg *.py
 
 lint_shell:
 	shellcheck *.sh

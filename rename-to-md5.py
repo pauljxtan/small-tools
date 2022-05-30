@@ -7,10 +7,10 @@ import re
 import sys
 
 IMG_EXTS = (
-    '.gif',
-    '.jpeg',
-    '.jpg',
-    '.png',
+    ".gif",
+    ".jpeg",
+    ".jpg",
+    ".png",
 )
 
 
@@ -24,23 +24,23 @@ def main():
 
         if ext.lower() not in IMG_EXTS:
             print(
-                f'Unsupported extension {ext} in {filename}; expected one of {IMG_EXTS}'
+                f"Unsupported extension {ext} in {filename}; expected one of {IMG_EXTS}"
             )
             sys.exit()
 
         if looks_like_md5(filename_no_ext):
-            print(f'{filename} already looks like md5; doing nothing')
+            print(f"{filename} already looks like md5; doing nothing")
             sys.exit()
 
         new_filename = get_md5_hash(filepath) + ext
         new_filepath = os.path.join(dirname, new_filename)
 
-        confirm = input(f'Rename {filepath} -> {new_filepath}? [y/N] ')
-        if confirm != 'y':
-            print('Aborting')
+        confirm = input(f"Rename {filepath} -> {new_filepath}? [y/N] ")
+        if confirm != "y":
+            print("Aborting")
             sys.exit()
 
-        os.system(f'mv -v {filepath} {new_filepath}')
+        os.system(f"mv -v {filepath} {new_filepath}")
 
 
 def looks_like_md5(string):
@@ -49,9 +49,9 @@ def looks_like_md5(string):
 
 
 def get_md5_hash(filepath):
-    with open(filepath, 'rb') as img_file:
+    with open(filepath, "rb") as img_file:
         return hashlib.md5(img_file.read()).hexdigest()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
